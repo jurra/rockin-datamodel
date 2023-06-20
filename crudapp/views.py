@@ -5,6 +5,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Contact
 from .forms import ContactForm
 from django.views.generic import ListView, DetailView
+from .forms import CoreForm
+from django.views.generic.edit import FormView
+from django.urls import reverse_lazy
+
 
 class IndexView(ListView):
     template_name = 'index.html'
@@ -41,3 +45,12 @@ def delete(request, pk, template_name='confirm_delete.html'):
         contact.delete()
         return redirect('index')
     return render(request, template_name, {'object':contact})
+
+class CoreFormView(FormView):
+    template_name = 'core.html'
+    form_class = CoreForm
+    success_url = reverse_lazy('core_list')
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
