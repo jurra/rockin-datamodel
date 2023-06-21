@@ -1,17 +1,17 @@
 from datetime import datetime, date
 from pydantic import BaseModel, Field
 from typing import Literal
-from .core import Core
+from rockin.pydantic_models.rockin_base import RockinBase
 
-class CoreChip(BaseModel):
+class CoreChip(RockinBase):
     ''' When you have the core, before sealing it in the core liner, you can take a chip of it
     chip as in potato chip    
     '''
-    chip_id: int = Field(description="The id of the core chip", example=1)
-    registered_by: str = Field(
-        ..., description="The user who registered the core chip")
-    well_name: str = Field(
-        ..., description="The name of the well", example="DEL-GT-01")
+    id: int = Field(description="The id of the core chip", example=1)
+    
+    # It relates to a core_id which is a foreign key
+    core_id: int = Field(description="The id of the core", example=1)
+    
     core_chip_number: int = Field(
         ..., description="The predefined name of the core chip", example=50)
     from_top_bottom: Literal['Top', 'Bottom'] = Field(
@@ -24,8 +24,6 @@ class CoreChip(BaseModel):
         examples= { "example_top":"DELGT01-C1-53-CHT53", "example_bottom": "DELGT01-C1-53-CHB54" })
     core_chip_depth: float = Field(
         ..., description="The depth of the core chip in meters", example=100.00)
-    collection_date: datetime = Field(
-        ..., description="The date when the core chip was collected", example="2023-01-01 12:00:00")
     lithology: str = Field(
         ..., description="The lithology of the core chip", example="Sandstone")
     remarks: str = Field(
@@ -38,12 +36,3 @@ class CoreChip(BaseModel):
     formation: str = Field(
         default=None,
         description="The formation of the core chip", example="Sandstone")
-    
-    
-    # Repeated from a base model to be defined
-    # core_number
-    # core_section_number
-    # core_section_name
-    # drilling mud
-    # registration time
-

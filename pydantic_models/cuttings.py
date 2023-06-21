@@ -2,15 +2,19 @@ from datetime import datetime, date
 from pydantic import BaseModel, Field
 from typing import Literal
 
+from rockin.pydantic_models.rockin_base import RockinBase
 
-class Cuttings(BaseModel):
+
+class Cuttings(RockinBase):
+    # Override core_number, core_section_number, core_section_name
+    # This is needed as these values are not applicable for cuttings
+    core_number: str = None
+    core_section_number: str = None
+    core_section_name: str = None
+
     id: int = Field(..., description="The id of the cuttings", example=1)
 
-    # REQUIRED FIELDS
-    registered_by: str = Field(
-        ..., description="The user who registered the cuttings")
-    well_name: str = Field(description="The name of the well", example="DEL-GT-01")
-    
+    # REQUIRED FIELDS    
     cuttings_number: int = Field(
         # These are given numbers by the drillers
         ..., description="The predefined name of the cuttings", example=50)
@@ -21,18 +25,9 @@ class Cuttings(BaseModel):
     cuttings_depth: float = Field(
         ..., description="The depth of the cuttings in meters", example=100.00)
     
-    collection_date: datetime = Field(
-        ..., description="The date when the cuttings were collected", example="2023-01-01 12:00:00")
-
     sample_state: Literal["Wet washed", "Wet unwashed", "Dry washed"] = Field(
         description="The state of the sample", example="Solid")
-
-    lithology: str = Field(
-        ..., description="The lithology of the sample", example="Sandstone")
-    
-    remarks: str = Field(
-        ..., description="The remarks of the sample", example="Sample cuttings")
-    
+        
     # OPTIONAL FIELDS
     collection_method: Literal["Drilling", "Coring", "Rathole", "Flushing"] = Field(
         # hast three options: Drilling, Coring, Rathole
@@ -42,9 +37,6 @@ class Cuttings(BaseModel):
         default=None,
         description="The method used for drilling", example="Rotary")
     
-    drilling_mud: Literal["Water-based mud", "Oil-based mud"] = Field(
-        description="The drilling mud used for the perforation of the cuttings", example="Water-based mud")
-
     sample_weight: float = Field(
         default=None,
         description="The weight of the sample in kilograms", example=50.00)
@@ -56,12 +48,10 @@ class Cuttings(BaseModel):
     dried_by: str = Field(
         default=None,
         description="The user who dried the sample", example="user1")
+    
     dried_date: datetime = Field(
         default=None,
         description="The date when the sample was dried", example="2023-01-01 12:00:00")
-    registration_time: datetime = Field(
-        default=datetime.now(),
-        description="The time when the cuttings were registered in the database", example="2023-01-01 12:00:00")
 
     # TODO: Not sure how this should be generated
     def gen_cuttings_number():
