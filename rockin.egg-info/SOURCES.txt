@@ -1,9 +1,0 @@
-README.md
-pyproject.toml
-setup.py
-rockin.egg-info/PKG-INFO
-rockin.egg-info/SOURCES.txt
-rockin.egg-info/dependency_links.txt
-rockin.egg-info/requires.txt
-rockin.egg-info/top_level.txt
-src/__init__.py
