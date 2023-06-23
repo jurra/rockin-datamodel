@@ -2,8 +2,8 @@ from datetime import datetime, date
 from pydantic import BaseModel, Field
 from typing import Literal, List
 
-from rockin.pydantic_models.rockin_base import RockinBase
-from core_chip import CoreChip
+from .rockin_base import RockinBase
+from .core_chip import CoreChip
 
 
 class Core(RockinBase):

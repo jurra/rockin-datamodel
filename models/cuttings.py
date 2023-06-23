@@ -2,7 +2,7 @@ from datetime import datetime, date
 from pydantic import BaseModel, Field
 from typing import Literal
 
-from rockin.pydantic_models.rockin_base import RockinBase
+from .rockin_base import RockinBase
 
 
 class Cuttings(RockinBase):

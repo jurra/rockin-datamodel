@@ -1,7 +1,7 @@
 from datetime import datetime, date
 from pydantic import BaseModel, Field
 from typing import Literal
-from rockin.pydantic_models.rockin_base import RockinBase
+from .rockin_base import RockinBase
 
 class CoreChip(RockinBase):
     ''' When you have the core, before sealing it in the core liner, you can take a chip of it

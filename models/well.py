@@ -1,9 +1,9 @@
 from datetime import datetime, date
 from pydantic import BaseModel, Field
 from typing import Literal, List
-from rockin.pydantic_models.core import Core
-from rockin.pydantic_models.cuttings import Cuttings
-from rockin.pydantic_models.micro_core import MicroCore
+from .core import Core
+from .cuttings import Cuttings
+from .micro_core import MicroCore
 
 
 class Well(BaseModel):

@@ -3,3 +3,10 @@ We use this data model to describe relationships between Wells and Cores. The py
 
 The data model can also be used to generate schemas.
 Furthermore you can explore the datamodel using python.
+
+## Try out the model
+Run the python example in interactive mode and explore the model. You will inmediately see how some fields are required and start changing the creation of objects so that they are valid.
+
+```bash
+python -i example.py
+```
