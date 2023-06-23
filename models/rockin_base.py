@@ -34,8 +34,11 @@ class RockinBase(BaseModel):
     core_number: str = Field(
         ..., description="The predefined name of the core from C1 to C9", example="C2")
 
+    planned_core_number: str = Field(
+        ..., description="The predefined name of the core from C1 to C9", example="C2")
+
     core_section_number: int = Field(
-        ..., description="The counter for all 1 meter sections of the core", example=1)
+        ..., description="The counter for all 1 meter sections of the core", example=53)
 
         # Automatically generated based on the well name, the core number and the core section number
     core_section_name: str = Field(

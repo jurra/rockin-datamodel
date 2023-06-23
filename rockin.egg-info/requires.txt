@@ -1,0 +1,12 @@
+django
+mysqlclient
+django-widget-tweaks
+pydantic
+python-dotenv
+
+[dev]
+coverage
+pytest
+pytest-cov
+pylint
+pytest-django
