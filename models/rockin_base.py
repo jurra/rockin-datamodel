@@ -9,7 +9,7 @@ class RockinBase(BaseModel):
         example="2020-01-01:12:00:00")
 
     # Next one would be DEL-GT-02
-    well_name: str = Field(
+    well: str = Field(
         ..., description="The name of the well", example="DEL-GT-01")
     # Automatically generated
     registered_by: str = Field(
