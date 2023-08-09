@@ -7,8 +7,6 @@ from .core_chip import CoreChip
 
 
 class Core(RockinBase):
-    id: int = Field(description="The id of the core", example=1)
-
     core_type: Literal['Core', 'Core catcher'] = Field(
         ..., description="The type of the core", example="Core")
     
