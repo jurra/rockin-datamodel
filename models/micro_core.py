@@ -13,7 +13,6 @@ class MicroCore(RockinBase):
     core_section_number: str = None
     core_section_name: str = None
     
-    id: int = Field(description="The id of the micro core", example=1)
     micro_core_number: int = Field(
         ..., description="The predefined name of the micro core", example=50)
     
