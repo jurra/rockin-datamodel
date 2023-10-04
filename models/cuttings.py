@@ -11,6 +11,7 @@ class Cuttings(RockinBase):
     core_number: str = None
     core_section_number: str = None
     core_section_name: str = None
+    planned_core_number: str = None
 
     id: int = Field(..., description="The id of the cuttings", example=1)
 
@@ -33,10 +34,6 @@ class Cuttings(RockinBase):
         # hast three options: Drilling, Coring, Rathole
         default=None, description="The method used for collecting the cuttings", example="Shovel")
     
-    drilling_method: Literal ["Rotary", "Motor", "Both"] = Field(
-        default=None,
-        description="The method used for drilling", example="Rotary")
-    
     sample_weight: float = Field(
         default=None,
         description="The weight of the sample in kilograms", example=50.00)
@@ -52,10 +49,4 @@ class Cuttings(RockinBase):
     dried_date: datetime = Field(
         default=None,
         description="The date when the sample was dried", example="2023-01-01 12:00:00")
-
-    # TODO: Not sure how this should be generated
-    def gen_cuttings_number():
-        # This is generated automatically
-        # This is the sample number and it has to be secquential
-        return 1
-    
+ 
