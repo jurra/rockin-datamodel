@@ -40,9 +40,6 @@ class Core(RockinBase):
         default=None, description="Whether the core was gamma ray scanned or not", example=False)
     radiation: float  = Field(
         default=None, description="The radiation of the core in Bq units", example=0.01)
-    
-    # This should automatically be captured by the system    
-    core_chips = ClassVar[List[CoreChip]]
 
     class Config:
         arbitrary_types_allowed = True
